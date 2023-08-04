@@ -112,18 +112,19 @@
                   <form role="form">
                     <label>Email</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                      <input type="email" class="form-control" placeholder="Email" id="email" aria-label="Email" aria-describedby="email-addon">
                     </div>
                     <label>Password</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                      <input type="email" class="form-control" placeholder="Password" id="pd" aria-label="Password" aria-describedby="password-addon">
                     </div>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
                       <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
+                      <input type="button" class="btn bg-gradient-info w-100 mt-4 mb-0" onclick="login()" value="Sign In">
+                      
                     </div>
                   </form>
                 </div>
@@ -204,6 +205,52 @@
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+
+  <script>
+    function login(name,pwds){
+     
+      let pwd = document.getElementById("pd");
+      let mail = document.getElementById("email");
+    
+      today = new Date();
+      var expire = new Date();
+      expire.setTime(today.getTime() + 3600000*24*15);
+     
+    
+    
+      document.cookie = "email="+mail.value+";path=/" + ";expires="+expire.toUTCString();
+    
+      document.cookie = "password="+encodeURI(pwd.value)+";path=/" + ";expires="+expire.toUTCString();
+    //  alert(pwd.value);
+    //  alert(mail.value);
+     console.log(pwd.value);
+     console.log(mail.value);
+      
+      //can only write one entity at a time (name, pass)
+    }  
+    
+    
+    //event handler for page load - runs on every refresh
+    window.onload = function(){
+    
+      //how to read back the stored name and password?
+      //https://stackoverflow.com/q/10730362/6160662
+      //https://stackoverflow.com/q/5639346/6160662
+    
+    
+      //for now
+
+      var pass = '123456';
+      var email ="test@gmail.com";
+    
+     
+      document.getElementById('email').value = email;
+    
+      document.getElementById('pd').value = pass;
+    
+    }
+      
+     </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

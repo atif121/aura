@@ -122,7 +122,7 @@
                     </label>
                   </div>
                   <div class="text-center">
-                    <input type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" onclick="createCookie()" value="Sign Up">
+                    <input type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" onclick="signUp()" value="Sign Up">
                   </div>
                   <p class="text-sm mt-3 mb-0">Already have an account? <a href="javascript:;" class="text-dark font-weight-bolder">Sign in</a></p>
                 </form>
@@ -140,7 +140,7 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script>
-function createCookie(name,pwds){
+function signUp(name,pwds){
   let username = document.getElementById("user");
   let pwd = document.getElementById("pd");
   let mail = document.getElementById("email");
@@ -154,8 +154,10 @@ function createCookie(name,pwds){
   document.cookie = "email="+mail.value+";path=/" + ";expires="+expire.toUTCString();
 
   document.cookie = "password="+encodeURI(pwd.value)+";path=/" + ";expires="+expire.toUTCString();
- alert(username.value);
- alert(mail.value);
+  console.log(username.value);
+  console.log(mail.value);
+  console.log(pwd.value);
+ 
   
   //can only write one entity at a time (name, pass)
 }  
